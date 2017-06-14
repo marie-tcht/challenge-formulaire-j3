@@ -1,0 +1,241 @@
+/*
+ * Fonts
+ */
+body, input, textarea, button {
+	color: #555;
+	font-family: 'Raleway';
+	line-height: 1.5;
+}
+
+.titre {
+	font-family: 'Playfair Display';
+}
+
+h1, h2 {
+	font-weight: bold;
+}
+
+/*
+ * Header
+ */
+#header {
+	background: rgb(230, 245, 255);
+	font-size: 1.5em;
+	padding: 3em 0;
+	text-align: center;
+}
+
+#header h1 {
+	color: #000;
+	font-size: 2em;
+	letter-spacing: .02em;
+}
+
+#header p {
+	color: #888;
+	font-weight: 200;
+}
+#cart-link {
+	font-weight: 400;
+	font-size: 0.8em;
+	text-decoration: underline;
+	text-align: right;
+}
+
+/*
+ * Products
+ */
+#products {
+	max-width: 1080px;
+	margin: 5em auto;
+	overflow: hidden;
+}
+
+.product {
+	float: left;
+	margin: 25px 35px;
+	position: relative;
+	width: 200px;
+}
+
+.product-name {
+	/* Layout */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 200px;
+	padding: 80px 20px;
+
+	/* Display */
+	background: rgba(230, 245, 255, 0.9);
+	opacity: 0;
+	transition: .4s;
+
+	/* Text */
+	color: #000;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.product-link:hover .product-name {
+	opacity: 1;
+}
+
+.product-desc {
+	font-size: .9em;
+}
+
+.product-price {
+	text-align: center;
+	margin: .5em 0;
+}
+.product-price-old {
+	color: #888;
+	text-decoration: line-through;
+}
+.product-price-real {
+	color: #000;
+}
+
+.product-infos {
+	text-align: center;
+}
+
+
+.product-see {
+	color: #555;
+}
+.product-see-text {
+	font-size: .8em;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.product-see:hover .fa {
+	color: rgb(100, 230, 240);
+}
+
+.product-add {
+	border: 0;
+	background: rgb(90, 215, 245);
+	color: #fff;
+	padding: .6em 1.2em;
+	text-transform: uppercase;
+	font-weight: 600;
+	margin-top: .5em;
+	cursor: pointer;
+}
+.product-add:hover {
+	background: rgb(100, 230, 240);
+}
+
+
+/*
+ * Product
+ */
+#product {
+	width: 1200px;
+	margin: auto;
+	padding-bottom: 15em;
+	overflow: hidden;
+}
+
+#product-summary {
+	float: right;
+	width: 350px;
+	margin-top: 15em;
+}
+
+#product-title {
+	color: #000;
+	font-size: 2.5em;
+	font-family: 'Playfair display';
+	line-height: 1.2;
+}
+
+#product-price {
+	margin: .5em 0;
+	font-size: 1.5em
+}
+
+#product-short {
+	font-size: 1.1em;
+	color: #888;
+}
+
+#product-link {
+	text-decoration: underline;
+}
+
+#product-add {
+	font-size: 1.1em;
+	margin-top: 2em;
+}
+
+#product-image {
+	float: left;
+	width: 800px;
+}
+
+#product-details {
+	clear: both;
+	width: 600px;
+	margin: auto;
+}
+
+.product-detail {
+	color: #000;
+	font-size: 2em;
+	margin-top: 1em;
+}
+
+/* Cart */
+table th, table td {
+	border: 1px solid #ccc; /* = #cccccc */
+}
+
+/* Contact */
+#contact {
+	margin: auto;
+	width: 980px;
+}
+
+	#contact label {
+		display: inline-block;
+		width: 9em;
+	}
+
+	#contact div {
+		margin: 0.5em 0;
+	}
+
+	#contact img {
+		float: right;
+		width: 350px;
+	}
+
+	.errors {
+		color: red;
+	}
+
+/* Message */
+.message-sent {
+	width: 300px;
+}
+.msg {
+	color: #FD3A3F;
+	text-align: center;
+	font-size: 3em;
+}
+
+
+
+/*
+ * Footer
+ */
+#footer {
+	background: rgb(230, 245, 255);
+	padding: 1em 0;
+	text-align: center;
+}
