@@ -12,35 +12,39 @@
     <form action="contact.php" method="post">
         <div>
             <label for="">Produit concerné</label>
-            <input type="text" name="title" value="<?= $product['title'] ?>"disabled="disabled">
+            <input type="text" name="title" value="<?= $product['title'] ?>"disabled>
         </div>
         <div>
             <label for="">Votre nom (*)</label>
-            <input type="text" name="name" value="">
+            <input type="text" name="name"
+            value="<?php if(isset($_POST['name'])) { echo $_POST['name']; }?>">
         </div>
         <div>
             <label for="">Votre prénom</label>
-            <input type="text" name="prenom">
+            <input type="text" name="prenom"
+            value="<?= isset($_POST['prenom']) ? $_POST['prenom'] : '' ?>">
         </div>
         <div>
             <label for="">Votre e-mail (*)</label>
-            <input type="text" name="email" value="">
+            <input type="text" name="email"
+            value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>">
         </div>
         <div>
             <label for="">Votre pointure</label>
             <select name="pointure">
                 <?php for($p = 36;$p <= 46;$p++ ) : ?>
-                <option value="<?= $p ?>" selected="selected"><?= $p ?></option>
+                <option value="<?= $p ?>" <?= isset($_POST['pointure']) && $_POST['pointure'] == $p ? 'selected' : '' ?>><?= $p ?></option>
                 <?php endfor ?>
             </select>
         </div>
         <div>
             <label for="">Nb de paires (*)</label>
-            <input type="text" name="paires" value="">
+            <input type="text" name="paires"
+            value="<?= isset($_POST['paires']) ? $_POST['paires'] : '' ?>">
         </div>
         <div>
             <label for="">Message</label><br>
-            <textarea name="message" rows="5" cols="60" placeholder="Vous voulez en faire quoi de vos chaussons ?"></textarea>
+            <textarea name="message" rows="5" cols="60" placeholder="Vous voulez en faire quoi de vos chaussons ?"><?= isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
         </div>
         <div>
             <input type="hidden" name="product-index" value="<?= $_POST['product-index'] ?>">

@@ -30,19 +30,19 @@ if(isset($_POST['contact-send'])) {
     if(empty($_POST['name'])) {
         $errors[] = 'Je ne sais même pas comment tu t\'appelle !!';
     }
-    elseif (strlen($_POST['name']) <= 3) {
-        $errors[] = 'Tu as dû oublier des lettres dans ton nom ! '.' '.$_POST['name'];
+    elseif (strlen($_POST['name']) < 3) {
+        $errors[] = 'Tu as dû oublier des lettres dans ton nom !';
     }
 
     if(strlen($_POST['prenom']) <= 2) {
-        $errors[] = 'Te serais-tu trompé dans ton prénom ? : '.$_POST['prenom'];
+        $errors[] = 'Te serais-tu trompé dans ton prénom ?';
     }
 
     if(empty($_POST['email'])) {
         $errors[] = 'C\'est quoi ton adresse mail ?';
     }
     elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Tu t\'es trompé dans ton mail... : '.$_POST['email'];
+        $errors[] = 'C\'est ça ton mail ??';
     }
 
 
@@ -50,7 +50,7 @@ if(isset($_POST['contact-send'])) {
         $errors[] = 'Faudrait nous dire combien tu en veux !';
     }
     elseif (!filter_var($_POST['paires'], FILTER_VALIDATE_INT)) {
-        $errors[] = 'Désolé, mais on ne les fait que par paire ! : '.$_POST['paires'];
+        $errors[] = 'Désolé, mais on ne les fait que par paire !';
     }
 }
 
