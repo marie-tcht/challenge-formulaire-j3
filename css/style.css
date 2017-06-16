@@ -215,9 +215,10 @@ table th, table td {
 		width: 350px;
 	}
 
-	.errors {
-		color: red;
-	}
+		.errors {
+			color: red;
+		}
+		
 
 /* Message */
 .message-sent {

@@ -12,12 +12,14 @@
     <form action="contact.php" method="post">
         <div>
             <label for="">Produit concerné</label>
-            <input type="text" name="title" value="<?= $product['title'] ?>"disabled>
+            <span><?= $product['title'] ?></span>
+            <input type="hidden" name="title" value="<?= $product['title'] ?>">
         </div>
         <div>
             <label for="">Votre nom (*)</label>
             <input type="text" name="name"
             value="<?php if(isset($_POST['name'])) { echo $_POST['name']; }?>">
+            <span class="error-champ"><?= isset($errors['name']) ? $errors['name'] : '' ?></span>
         </div>
         <div>
             <label for="">Votre prénom</label>
@@ -39,7 +41,7 @@
         </div>
         <div>
             <label for="">Nb de paires (*)</label>
-            <input type="text" name="paires"
+            <input type="number" name="paires"
             value="<?= isset($_POST['paires']) ? $_POST['paires'] : '' ?>">
         </div>
         <div>

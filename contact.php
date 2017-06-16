@@ -28,7 +28,7 @@ $errors = [];
 if(isset($_POST['contact-send'])) {
     // Je vérifie que ma variable n'est pas vide
     if(empty($_POST['name'])) {
-        $errors[] = 'Je ne sais même pas comment tu t\'appelle !!';
+        $errors['name'] = 'Je ne sais même pas comment tu t\'appelle !!';
     }
     elseif (strlen($_POST['name']) < 3) {
         $errors[] = 'Tu as dû oublier des lettres dans ton nom !';
@@ -56,10 +56,32 @@ if(isset($_POST['contact-send'])) {
 
 
 include("templates/header.php");
+// Si j'ai posté mon form et que je n'ai pas d'erreur
+// J'envoie le message par mail
+// J'affiche une page "message envoyé"
 if(isset($_POST['contact-send']) && empty($errors))
 {
-    include("templates/message-sent.php");
+    $message = 'Encore un boulet qui ne comprends rien...
+
+    Modele de chaussons : '.$_POST['title'].'
+    Nom du visiteur : '.$_POST['name'].'
+    Prenom : '.$_POST['prenom'].'
+    E-mail : '.$_POST['email'].'
+    Poiture : '.$_POST['pointure'].'
+    Nombres de paires : '.$_POST['paires'].'
+    Message : '.$_POST['message'];
+
+// On envoie le mail à l'administrateur du site
+    if(mail('julien.moulis@moulis.me', 'Encore un boulet qui ne comprends rien...', $message)) {
+        // En cas de réussite
+        include("templates/message-sent.php");
+    }
+    else {
+        // Sinon on stoppe le script et on affiche une erreur
+        die('Erreur envoie du mail');
+    }
 } else {
+    // Sinon j'affiche mon form
     include("templates/contact-form.php");
 }
 include("templates/footer.php");

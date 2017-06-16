@@ -28,6 +28,14 @@ if(isset($_GET['vider'])) {
 // Et eventuellement d'autres choses que le panier ! Ce n'est pas souhaitable
 if(!isset($_SESSION["cart"]) || isset($_POST['cart-empty'])) {
 	$_SESSION["cart"] = [];
+
+	// Si on vide le panier, on redirige
+	if(isset($_POST['cart-empty'])) {
+		// Pour éviter la demande de renvoi du formulaire
+		// En cas de retour sur cette page, on redirige le client
+		header('Location: cart.php');
+		exit;
+	}
 }
 
 /*
@@ -50,29 +58,33 @@ if(isset($_POST["product-index"])) {
         // le produit qu'on veut ajouter au panier est valide
         $productToAdd = $products[$productId];
 
-		// Pour gérer les quantités, on vérife d'abord si le produit est dans le panier
-		if(isset($_SESSION['cart'][$productId])) {
-			// On ajoute 1 à la quantité existante
-			$_SESSION['cart'][$productId]['quantity'] += 1;
-		}
-		else {
+				// Pour gérer les quantités, on vérife d'abord si le produit est dans le panier
+				if(isset($_SESSION['cart'][$productId])) {
+					// On ajoute 1 à la quantité existante
+					$_SESSION['cart'][$productId]['quantity'] += 1;
+				}
+				else {
 	        // on enregistre l'ajout dans la session
-			// à l'index qui correspond à l'identifiant du produit
-			// Au lieu d'avoir un tableau avec des index 0, 1, 2, 3, 4
-			// on aura un tableau avec des index 2, 5, 1, 3, 8
-			// OU encore
-			// on remplace l'indice du tableau par l'id du produit,
-			// ce qui ecrase l'ancienne indice au chargement
-			// (donc pas de ligne supplémentaire pour 1 meme product)
+					// à l'index qui correspond à l'identifiant du produit
+					// Au lieu d'avoir un tableau avec des index 0, 1, 2, 3, 4
+					// on aura un tableau avec des index 2, 5, 1, 3, 8
+					// OU encore
+					// on remplace l'indice du tableau par l'id du produit,
+					// ce qui ecrase l'ancienne indice au chargement
+					// (donc pas de ligne supplémentaire pour 1 meme product)
 	        $_SESSION["cart"][$productId] = [
 	            "index" => $_POST["product-index"],
 	            "title" => $productToAdd["title"],
 	            "price" => $productToAdd["promo_price"],
-				// Quand on ajoute le produit, on défini sa quantité à 1
-				"quantity" => 1,
-	        ];
-		}
-    }
+							// Quand on ajoute le produit, on défini sa quantité à 1
+							"quantity" => 1,
+	        	];
+				}
+		// Pour éviter la demande de renvoi du formulaire
+		// En cas de retour sur cette page, on redirige le client
+		header('Location: cart.php');
+		exit;
+  	}
 }
 
 //
