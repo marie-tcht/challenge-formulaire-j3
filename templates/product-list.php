@@ -26,8 +26,7 @@
                     <input type="hidden" name="product-index" value="<?= $id ?>" />
         	        <input type="submit" class="product-add" value="Ajouter au panier" />
                     <!-- button type="submit" name="product-index" value="<?= $id ?>">Ajouter au panier</button -->
-        		</form>
-
+        		    </form>
             </p>
         </article>
     <?php
